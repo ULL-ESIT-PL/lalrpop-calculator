@@ -17,7 +17,7 @@ fn main() {
     let parser = TermParser::new();
 
     println!("22 = {}", parser.parse("22").unwrap());
-    println!("(22) = {}", parser.parse("(22)").unwrap());
+    println!("(22.5) = {}", parser.parse("(22.5)").unwrap());
     println!("((((22)))) = {}", parser.parse("((((22))))").unwrap());
     println!("Error example: ((22) = {}", parser.parse("((22)").unwrap_err());
 }

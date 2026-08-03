@@ -3,10 +3,10 @@ use std::str::FromStr;
 grammar;
 
 // This grammar has two nonterminals, Term and Num.
-pub Term: i32 = { // pub:  LALRPOP will generate a public struct (named, TermParser) 
+pub Term: f64 = { // pub:  LALRPOP will generate a public struct (named, TermParser) 
     <n:Num> => n, // that you can use to parse strings as Term. "n" refers to the value returned by the Num nonterminal.
     "(" <t:Term> ")" => t, // "t" is like "$2" in yacc/bison. It refers to the value returned by the Term nonterminal.
 };
 
 // Num is a private nonterminal.
-Num: i32 = <s:r"[0-9]+"> => i32::from_str(s).unwrap();
+Num: f64 = <s:r"[0-9]+([.][0-9]+)?"> => f64::from_str(s).unwrap();
