@@ -3,18 +3,21 @@
 use lalrpop_util::lalrpop_mod;
 
 lalrpop_mod!(pub calculator1); // synthesized by LALRPOP
+use crate::calculator1::TermParser;
 
 #[test]
 fn calculator1() {
-    assert!(calculator1::TermParser::new().parse("22").is_ok());
-    assert!(calculator1::TermParser::new().parse("(22)").is_ok());
-    assert!(calculator1::TermParser::new().parse("((((22))))").is_ok());
-    assert!(calculator1::TermParser::new().parse("((22)").is_err());
+    assert!(TermParser::new().parse("22").is_ok());
+    assert!(TermParser::new().parse("(22)").is_ok());
+    assert!(TermParser::new().parse("((((22))))").is_ok());
+    assert!(TermParser::new().parse("((22)").is_err());
 }
 
 fn main() {
-    println!("22 = {}", calculator1::TermParser::new().parse("22").unwrap());
-    println!("(22) = {}", calculator1::TermParser::new().parse("(22)").unwrap());
-    println!("((((22)))) = {}", calculator1::TermParser::new().parse("((((22))))").unwrap());
-    println!("((22) = {}", calculator1::TermParser::new().parse("((22)").unwrap_err());
+    let parser = TermParser::new();
+
+    println!("22 = {}", parser.parse("22").unwrap());
+    println!("(22) = {}", parser.parse("(22)").unwrap());
+    println!("((((22)))) = {}", parser.parse("((((22))))").unwrap());
+    println!("Error example: ((22) = {}", parser.parse("((22)").unwrap_err());
 }
