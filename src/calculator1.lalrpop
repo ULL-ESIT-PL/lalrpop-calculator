@@ -1,3 +1,4 @@
+// https://lalrpop.github.io/lalrpop/tutorial/002_paren_numbers.html
 use std::str::FromStr;
 
 grammar;
@@ -8,5 +9,7 @@ pub Term: f64 = { // pub:  LALRPOP will generate a public struct (named, TermPar
     "(" <t:Term> ")" => t, // "t" is like "$2" in yacc/bison. It refers to the value returned by the Term nonterminal.
 };
 
-// Num is a private nonterminal.
+// Num is a private nonterminal. The lexer is embedded in the grammar. For a separated lexer see 
+// https://lalrpop.github.io/lalrpop/lexer_tutorial/005_external_lib.html and
+// https://github.com/lucifer1004/logos-lalrpop-examples/tree/main
 Num: f64 = <s:r"\d+([.][0-9]+)?"> => f64::from_str(s).unwrap();
