@@ -7,5 +7,6 @@ fn main() {
     // Specifically, it points to target/debug/build/calculator-<hash>/out/
     // loo for a file named calculator1.rs in the OUT_DIR, which is generated from calculator1.lalrpop in src/.
     // process_root() returns a Result<(), lalrpop::Error>, so we call unwrap() to panic on any errors.
+    // See target/debug/build/calculator-<hash>/out/calculator1.rs for the generated parser code.
     lalrpop::process_root().unwrap();
 }
