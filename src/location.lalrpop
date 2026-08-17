@@ -9,10 +9,10 @@ pub Term: f64 = { // pub:  LALRPOP will generate a public struct (named, TermPar
     "(" <t:Term> ")" => t, // "t" is like "$2" in yacc/bison. It refers to the value returned by the Term nonterminal.
 };
 
-// Num is a private nonterminal. The lexer is embedded in the grammar. For a separated lexer see:
+// Num is in this case a public nonterminal. The lexer is embedded in the grammar. For a separated lexer see:
 // https://lalrpop.github.io/lalrpop/lexer_tutorial/005_external_lib.html and
 // https://github.com/lucifer1004/logos-lalrpop-examples/tree/main
-Num: f64 = <start: @L> <s:r"\d+([.][0-9]+)?"><end: @R> => {
+pub Num: f64 = <start: @L> <s:r"\d+([.][0-9]+)?"><end: @R> => {
     println!("The number {s} starts at position {} and ends at position {}", start, end); // start and end are the positions (usize) of the first and last characters of the matched string.
     f64::from_str(s).unwrap()
 };

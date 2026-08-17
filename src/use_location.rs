@@ -9,7 +9,7 @@ use lalrpop_util::lalrpop_mod;
 // }
 // See target/debug/build/calculator-<hash>>/out/use_location.rs
 lalrpop_mod!(pub location); // synthesized by LALRPOP
-use crate::location::TermParser;
+use crate::location::{NumParser, TermParser};
 
 #[test]
 fn use_location() {
@@ -21,9 +21,12 @@ fn use_location() {
 
 fn main() {
     let parser = TermParser::new();
+    let parse_num: NumParser = NumParser::new();
 
     println!("22 =at pos=> {}", parser.parse("22").unwrap());
     println!("(22.5) =at pos => {}", parser.parse("(22.5)").unwrap());
     println!("((((22)))) =at pos => {}", parser.parse("((((22))))").unwrap());
     println!("Error example: ((22) {}", parser.parse("((22)").unwrap_err());
+
+    println!("Using NumParser: 33 => {}", parse_num.parse("22").unwrap());
 }
