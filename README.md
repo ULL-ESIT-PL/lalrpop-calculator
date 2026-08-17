@@ -46,16 +46,16 @@ Expected one of ")"
 ## Running location.larlpop
 
 ```
-lalrpop-calculator git:(calculator1) ✗ cargo run --bin location
+➜  lalrpop-calculator git:(calculator1) ✗ cargo run --bin location
    Compiling calculator v0.1.0 (/Users/casianorodriguezleon/campus-virtual/2627/learning/rust/LALRPOP/lalrpop-calculator)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.43s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.34s
      Running `target/debug/location`
 The number 22 starts at position 0 and ends at position 2
-22 =at pos=> 2
+22 =at pos=> 22
 The number 22.5 starts at position 1 and ends at position 5
-(22.5) =at pos => 5
+(22.5) =at pos => 22.5
 The number 22 starts at position 4 and ends at position 6
-((((22)))) =at pos => 6
+((((22)))) =at pos => 22
 The number 22 starts at position 2 and ends at position 4
 Error example: ((22) Unrecognized EOF found at 5
 Expected one of ")"

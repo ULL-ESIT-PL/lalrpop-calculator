@@ -1,10 +1,10 @@
 // https://lalrpop.github.io/lalrpop/tutorial/002_paren_numbers.html
-// use std::str::FromStr;
+use std::str::FromStr;
 
 grammar;
 
 // This grammar has two nonterminals, Term and Num.
-pub Term: usize = { // pub:  LALRPOP will generate a public struct (named, TermParser) 
+pub Term: f64 = { // pub:  LALRPOP will generate a public struct (named, TermParser) 
     <n:Num> => n,   // that you can use to parse strings as Term. "n" refers to the value returned by the Num nonterminal.
     "(" <t:Term> ")" => t, // "t" is like "$2" in yacc/bison. It refers to the value returned by the Term nonterminal.
 };
@@ -12,7 +12,7 @@ pub Term: usize = { // pub:  LALRPOP will generate a public struct (named, TermP
 // Num is a private nonterminal. The lexer is embedded in the grammar. For a separated lexer see:
 // https://lalrpop.github.io/lalrpop/lexer_tutorial/005_external_lib.html and
 // https://github.com/lucifer1004/logos-lalrpop-examples/tree/main
-Num: usize = <start: @L> <s:r"\d+([.][0-9]+)?"><end: @R> => {
+Num: f64 = <start: @L> <s:r"\d+([.][0-9]+)?"><end: @R> => {
     println!("The number {s} starts at position {} and ends at position {}", start, end); // start and end are the positions (usize) of the first and last characters of the matched string.
-    end //f64::from_str(s).unwrap();
+    f64::from_str(s).unwrap()
 };
