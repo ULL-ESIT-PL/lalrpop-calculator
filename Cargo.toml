@@ -11,10 +11,13 @@ lalrpop = "0.23.1"
 lalrpop-util = { version = "0.23.1", features = ["lexer", "unicode"] }
 
 [[bin]]
-
 name = "main"
 path = "src/main.rs" # <-- We added this line to specify the entry point of the program.
 
 [[bin]]
 name = "location"
 path = "src/use_location.rs"
+
+[[bin]]
+name = "foobar"
+path = "src/use_foobar.rs"

@@ -20,13 +20,14 @@ fn use_location() {
 }
 
 fn main() {
-    let parser = TermParser::new();
     let parse_num: NumParser = NumParser::new();
+    let parser = TermParser::new(); // Creating a closure to avoid repeating the parser creation for each parse call
+    let parse = |input| parser.parse(input);
 
-    println!("22 =at pos=> {}", parser.parse("22").unwrap());
-    println!("(22.5) =at pos => {}", parser.parse("(22.5)").unwrap());
-    println!("((((22)))) =at pos => {}", parser.parse("((((22))))").unwrap());
-    println!("Error example: ((22) {}", parser.parse("((22)").unwrap_err());
+    println!("22 =at pos=> {}", parse("22").unwrap());
+    println!("(22.5) =at pos => {}", parse("(22.5)").unwrap());
+    println!("((((22)))) =at pos => {}", parse("((((22))))").unwrap());
+    println!("Error example: ((22) {}", parse("((22)").unwrap_err());
 
     println!("Using NumParser: 33 => {}", parse_num.parse("22").unwrap());
 }
