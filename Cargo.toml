@@ -33,3 +33,7 @@ path = "src/use_handling1.rs"
 [[bin]]
 name = "handling2"
 path = "src/use_handling2.rs"
+
+[[bin]]
+name = "ast"
+path = "src/use_buildingast.rs"
