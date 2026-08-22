@@ -6,7 +6,7 @@ Foo = { A B };
 Bar = { C Foo };
 
 pub FooBar: String = {
-    <(a, b):Foo> => format!("{a}{b}"), // Returns "a".to_string() + "b".to_string()
+    <(a, b):Foo> => format!("{a}{b}"), // format!("{a}{b}") returns "a".to_string() + "b".to_string()
     <(c, (a, b)):Bar> => format!("{c}{a}{b}")
 };
 

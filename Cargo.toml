@@ -21,3 +21,7 @@ path = "src/use_location.rs"
 [[bin]]
 name = "foobar"
 path = "src/use_foobar.rs"
+
+[[bin]]
+name = "diamond"
+path = "src/use_diamond.rs"
