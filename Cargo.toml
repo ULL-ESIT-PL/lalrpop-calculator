@@ -25,3 +25,7 @@ path = "src/use_foobar.rs"
 [[bin]]
 name = "diamond"
 path = "src/use_diamond.rs"
+
+[[bin]]
+name = "handling1"
+path = "src/use_handling1.rs"
