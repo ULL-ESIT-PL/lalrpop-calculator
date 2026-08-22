@@ -29,3 +29,7 @@ path = "src/use_diamond.rs"
 [[bin]]
 name = "handling1"
 path = "src/use_handling1.rs"
+
+[[bin]]
+name = "handling2"
+path = "src/use_handling2.rs"

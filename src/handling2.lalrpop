@@ -1,0 +1,19 @@
+use std::str::FromStr;
+
+grammar;
+
+pub Expr: i32 = {
+    #[precedence(level = "2")] #[assoc(side = "left")]
+    <l:Expr> "+" <r:Expr> => l + r,
+    <l:Expr> "-" <r:Expr> => l - r,
+    #[precedence(level = "1")] #[assoc(side = "left")]
+    <l:Expr> "*" <r:Expr> => l * r,
+    <l:Expr> "/" <r:Expr> => l / r,
+    #[precedence(level = "0")]
+    Term,
+};
+
+Term: i32 = {
+    <n:r"[0-9]+"> => i32::from_str(n).unwrap(),
+    "(" <e:Expr> ")" => e,
+};
