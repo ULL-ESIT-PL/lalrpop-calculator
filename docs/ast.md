@@ -1,4 +1,4 @@
-# Explicación del programa ast.rs
+# Explicación del programa src/ast.rs
 
 Véase [src/ast.rs](/src/ast.rs) para el código fuente.
 

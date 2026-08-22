@@ -8,11 +8,11 @@ lalrpop_mod!(pub buildingast); // synthesized by LALRPOP
 use crate::buildingast::ExprParser;
 
 #[test]
-fn calculator4() {
+fn buildingast() {
     let expr = buildingast::ExprParser::new()
         .parse("22 * 44 + 66")
         .unwrap();
-    assert_eq!(&format!("{}", expr), "((22 * 44) + 66)");
+    assert_eq!(&format!("{}", expr), "Add(Mul(22, 44), 66)");
 }
 
 fn main() {
