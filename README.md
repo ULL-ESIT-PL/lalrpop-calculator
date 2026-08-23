@@ -7,6 +7,15 @@ see
 
 This repo contains my experiments reading the LALRPOP documentation and trying to understand how it works. The code is based on the examples in the LALRPOP documentation, but I have made some modifications.
 
+## First Steps
+
+See 
+
+- Section [Quick Start Guide](https://lalrpop.github.io/lalrpop/quick_start_guide.html) for the initial steps.
+- [Cargo.toml](Cargo.toml) for the dependencies used in this project.
+- [build.rs](build.rs) for the build script that runs LALRPOP on the .lalrpop files.
+
+
 ## lalrpop help
 
 ```
@@ -28,14 +37,6 @@ Options:
     --comments           Enable comments in the generated code.
     --report             Generate report files.
 ```
-
-## First Steps
-
-See 
-
-- Section [Quick Start Guide](https://lalrpop.github.io/lalrpop/quick_start_guide.html) for the initial steps.
-- [Cargo.toml](Cargo.toml) for the dependencies used in this project.
-- [build.rs](build.rs) for the build script that runs LALRPOP on the .lalrpop files.
 
 ## Running calculator1.lalrpop
 
