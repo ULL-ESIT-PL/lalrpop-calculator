@@ -29,6 +29,14 @@ Options:
     --report             Generate report files.
 ```
 
+## First Steps
+
+See 
+
+- Section [Quick Start Guide](https://lalrpop.github.io/lalrpop/quick_start_guide.html) for the initial steps.
+- [Cargo.toml](Cargo.toml) for the dependencies used in this project.
+- [build.rs](build.rs) for the build script that runs LALRPOP on the .lalrpop files.
+
 ## Running calculator1.lalrpop
 
 See
