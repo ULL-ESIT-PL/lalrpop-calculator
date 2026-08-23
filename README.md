@@ -27,11 +27,16 @@ Options:
 
 ## Running calculator1.lalrpop
 
+See
+
+- [src/calculator1.lalrpop](src/calculator1.lalrpop)
+- [src/use_calculator1.rs](src/use_calculator1.rs)
+  
 ```
-➜  lalrpop-calculator git:(calculator1) ✗ cargo run --bin main    
+➜  lalrpop-calculator git:(calculator1) ✗ cargo run --bin calculator1
    Compiling calculator v0.1.0 (/Users/casianorodriguezleon/campus-virtual/2627/learning/rust/LALRPOP/lalrpop-calculator)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.25s
-     Running `target/debug/main`
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.61s
+     Running `target/debug/calculator1`
 The number 22 ends at position 2
 22 = 22
 The number 22.5 ends at position 5
