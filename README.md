@@ -52,7 +52,13 @@ Error example: ((22) = Unrecognized EOF found at 5
 Expected one of ")"
 ```
 
-## Running location.larlpop
+## Running location.lalrpop
+
+Based on: https://lalrpop.github.io/lalrpop/tutorial/002_paren_numbers.html
+
+Parses parenthesized numbers (`(((22)))`) and uses the `@L`/`@R` markers to
+capture the byte offsets where a matched `Num` token starts and ends, printing
+them alongside the parsed value.
 
 See
 
@@ -74,6 +80,89 @@ Error example: ((22) Unrecognized EOF found at 5
 Expected one of ")"
 The number 22 starts at position 0 and ends at position 2
 Using NumParser: 33 => 22
+```
+
+## Running diamond.lalrpop
+
+Based on: https://lalrpop.github.io/lalrpop/tutorial/003_type_inference.html#type-inference
+
+The `<>` ("diamond") operator lets you avoid writing out an explicit action
+when you just want to select (and possibly reassemble) the values matched by
+a rule, instead of writing an explicit `<x:A> <y:B> => ...` action for every
+production. [src/diamond.lalrpop](src/diamond.lalrpop) shows several
+equivalent ways of writing the same rule with and without `<>`, including how
+it interacts with tuple patterns (`UnwrappedPair`) and `format!` (`FormattedPair`).
+
+See
+
+- [src/diamond.lalrpop](src/diamond.lalrpop)
+- [src/use_diamond.rs](src/use_diamond.rs)
+
+```
+➜  lalrpop-calculator git:(calculator1) ✗ cargo run --bin diamond
+   Compiling calculator v0.1.0 (/Users/casianorodriguezleon/campus-virtual/2627/learning/rust/LALRPOP/lalrpop-calculator)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.23s
+     Running `target/debug/diamond`
+SingleParser: Input a => a
+PairParser: Input a b => ("a", "b")
+UnwrappedPairParser: Input a b => "ab"
+FormattedPairParser: Input a b => "a b"
+```
+
+## Running handling1.lalrpop
+
+Based on: https://lalrpop.github.io/lalrpop/tutorial/004_full_expressions.html
+
+A first cut at a full arithmetic expression grammar with `+`, `-`, `*`, `/`
+and parentheses. Precedence and left-associativity are encoded "by hand" via
+the classic layered-nonterminal trick (`Expr` → `Term` → `Factor` → `Number`),
+the same technique used in [src/calculator1.lalrpop](src/calculator1.lalrpop),
+rather than via LALRPOP's `#[precedence]`/`#[assoc]` annotations (compare
+with [handling2.lalrpop](#running-handling2lalrpop) below).
+
+See
+
+- [src/handling1.lalrpop](src/handling1.lalrpop)
+- [src/use_handling1.rs](src/use_handling1.rs)
+
+```
+➜  lalrpop-calculator git:(calculator1) ✗ cargo run --bin handling1
+   Compiling calculator v0.1.0 (/Users/casianorodriguezleon/campus-virtual/2627/learning/rust/LALRPOP/lalrpop-calculator)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.40s
+     Running `target/debug/handling1`
+3-2-1 = 0
+2+3*5 = 17
+(4-2)*2 = 4
+Error example: ((22) = Unrecognized EOF found at 5
+Expected one of ")", "+" or "-"
+```
+
+## Running handling2.lalrpop
+
+Based on: https://lalrpop.github.io/lalrpop/tutorial/004_full_expressions.html
+
+The same arithmetic expressions as `handling1.lalrpop`, but this time the
+grammar has a single `Expr` nonterminal and precedence/associativity are
+declared explicitly with the `#[precedence(level = "N")]` and
+`#[assoc(side = "left")]` attributes instead of being encoded through
+separate `Expr`/`Term`/`Factor` layers. Lower `level` values bind tighter
+(`*`/`/` at level `1` bind tighter than `+`/`-` at level `2`).
+
+See
+
+- [src/handling2.lalrpop](src/handling2.lalrpop)
+- [src/use_handling2.rs](src/use_handling2.rs)
+
+```
+➜  lalrpop-calculator git:(calculator1) ✗ cargo run --bin handling2
+   Compiling calculator v0.1.0 (/Users/casianorodriguezleon/campus-virtual/2627/learning/rust/LALRPOP/lalrpop-calculator)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.42s
+     Running `target/debug/handling2`
+3-2-1 = 0
+2+3*5 = 17
+(4-2)*2 = 4
+Error example: ((22) = Unrecognized EOF found at 5
+Expected one of ")", "+" or "-"
 ```
 
 ## Running buildingast.lalrpop
