@@ -50,6 +50,11 @@ Expected one of ")"
 
 ## Running location.larlpop
 
+See
+
+- [src/location.lalrpop](src/location.lalrpop)
+- [src/use_location.rs](src/use_location.rs)
+
 ```
 ➜  lalrpop-calculator git:(calculator1) cargo run --bin location            
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.25s
