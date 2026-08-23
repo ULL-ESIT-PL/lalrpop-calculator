@@ -61,3 +61,24 @@ Expected one of ")"
 The number 22 starts at position 0 and ends at position 2
 Using NumParser: 33 => 22
 ```
+
+## Running buildingast.lalrpop
+
+See 
+- [docs/ast.md](docs/ast.md)
+- [src/ast.rs](src/ast.rs)
+- [src/use_buildingast.rs](src/use_buildingast.rs)
+- [src/buildingast.lalrpop](src/buildingast.lalrpop)
+
+
+```
+➜  lalrpop-calculator git:(calculator1) cargo run --bin ast                                                                                         
+   Compiling calculator v0.1.0 (/Users/casianorodriguezleon/campus-virtual/2627/learning/rust/LALRPOP/lalrpop-calculator)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.05s
+     Running `target/debug/ast`
+3-2-1 = Sub(Sub(3, 2), 1)
+2+3*5 = Add(2, Mul(3, 5))
+(4-2)*2 = Mul(Sub(4, 2), 2)
+Error example: ((22) = Unrecognized EOF found at 5
+Expected one of ")", "+" or "-"
+```
