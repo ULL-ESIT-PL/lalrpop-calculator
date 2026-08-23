@@ -7,6 +7,13 @@ see
 
 This repo contains my experiments reading the LALRPOP documentation and trying to understand how it works. The code is based on the examples in the LALRPOP documentation, but I have made some modifications.
 
+To learn Rust use 
+
+- https://rust-lang.org/learn/
+- https://rust-book.cs.brown.edu/
+- https://github.com/crguezl/the-rust-programming-language-exercises
+- https://rustlings.rust-lang.org/
+
 ## First Steps
 
 See 
