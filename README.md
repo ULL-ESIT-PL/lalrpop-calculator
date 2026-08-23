@@ -1,7 +1,11 @@
-See 
+
+LALRPOP is a Rust parser generator framework. To learn about LALRPOP,
+see 
 
 1. https://lalrpop.github.io/lalrpop
 2. https://github.com/lalrpop/lalrpop/tree/master/doc/calculator
+
+This repo contains my experiments reading the LALRPOP documentation and trying to understand how it works. The code is based on the examples in the LALRPOP documentation, but I have made some modifications.
 
 ## lalrpop help
 
