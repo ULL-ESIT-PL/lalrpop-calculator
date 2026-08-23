@@ -168,6 +168,7 @@ Expected one of ")", "+" or "-"
 ## Running buildingast.lalrpop
 
 See 
+- [Section Building ASTs](https://lalrpop.github.io/lalrpop/tutorial/005_building_asts.html#building-asts) in the LALRPOP tutorial.
 - [docs/ast.md](docs/ast.md)
 - [src/ast.rs](src/ast.rs)
 - [src/use_buildingast.rs](src/use_buildingast.rs)
