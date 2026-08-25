@@ -19,6 +19,8 @@ fn main() {
     let parser = ExprParser::new();
 
     println!("3-2-1 = {}", parser.parse("3-2-1").unwrap());
+    println!("3-2-1 = {:?}", parser.parse("3-2-1").unwrap()); // Op(Op(Number(3), Sub, Number(2)), Sub, Number(1))
+
     println!("2+3*5 = {}", parser.parse("2+3*5").unwrap());
     println!("(4-2)*2 = {}", parser.parse("(4-2)*2").unwrap());
     println!("Error example: ((22) = {}", parser.parse("((22)").unwrap_err());

@@ -1,18 +1,18 @@
-// https://lalrpop.github.io/lalrpop/tutorial/002_paren_numbers.html
+/// https:///lalrpop.github.io/lalrpop/tutorial/002_paren_numbers.html
 use std::str::FromStr;
 
 grammar;
 
-// This grammar has two nonterminals, Term and Num.
-pub Term: f64 = { // pub:  LALRPOP will generate a public struct (named, TermParser) 
-    <n:Num> => n, // that you can use to parse strings as Term. "n" refers to the value returned by the Num nonterminal.
-    "(" <t:Term> ")" => t, // "t" is like "$2" in yacc/bison. It refers to the value returned by the Term nonterminal.
+/// This grammar has two nonterminals, Term and Num.
+pub Term: f64 = { /// pub:  LALRPOP will generate a public struct (named, TermParser) 
+    <n:Num> => n, /// that you can use to parse strings as Term. "n" refers to the value returned by the Num nonterminal.
+    "(" <t:Term> ")" => t, /// "t" is like "$2" in yacc/bison. It refers to the value returned by the Term nonterminal.
 };
 
-// Num is a private nonterminal. The lexer is embedded in the grammar. For a separated lexer see 
-// https://lalrpop.github.io/lalrpop/lexer_tutorial/005_external_lib.html and
-// https://github.com/lucifer1004/logos-lalrpop-examples/tree/main
-Num: f64 = <s:r"\d+([.][0-9]+)?"><end: @R> => {          // @R is a built-in rule that matches the end of the input.
-    println!("The number {s} ends at position {}", end); // end is the position (usize)of the last character of the matched string. 
+/// Num is a private nonterminal. The lexer is embedded in the grammar. For a separated lexer see 
+/// https:///lalrpop.github.io/lalrpop/lexer_tutorial/005_external_lib.html and
+/// https://github.com/lucifer1004/logos-lalrpop-examples/tree/main
+Num: f64 = <s:r"\d+([.][0-9]+)?"><end: @R> => {          /// @R is a built-in rule that matches the end of the input.
+    println!("The number {s} ends at position {}", end); /// end is the position (usize)of the last character of the matched string. 
     f64::from_str(s).unwrap()
 };

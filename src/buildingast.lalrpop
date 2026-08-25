@@ -4,21 +4,21 @@ use crate::ast::{Expr, OpCode};
 grammar;
 
 pub Expr: Box<Expr> = {
-    <e:Expr> <op:ExprOp> <t:Term> => Box::new(Expr::Op(e, op, t)),
+    <e:Expr> <op:AddOp> <t:Term> => Box::new(Expr::Op(e, op, t)),
     <t:Term> => t,
 };
 
-ExprOp: OpCode = {
+AddOp: OpCode = {
     "+" => OpCode::Add,
     "-" => OpCode::Sub,
 };
 
 Term: Box<Expr> = {
-    <t:Term> <op:TermOp> <f:Factor> => Box::new(Expr::Op(t, op, f)),
+    <t:Term> <op:MulOp> <f:Factor> => Box::new(Expr::Op(t, op, f)),
     <f:Factor> => f,
 };
 
-TermOp: OpCode = {
+MulOp: OpCode = {
     "*" => OpCode::Mul,
     "/" => OpCode::Div,
 };
