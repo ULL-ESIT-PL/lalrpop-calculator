@@ -22,8 +22,8 @@ fn handling2() {
 fn main() {
     let parser = ExprParser::new();
 
-    println!("3-2-1 = {}", parser.parse("3-2-1").unwrap());
-    println!("2+3*5 = {}", parser.parse("2+3*5").unwrap());
-    println!("(4-2)*2 = {}", parser.parse("(4-2)*2").unwrap());
+    println!("3 - 2 - 1 = {}", parser.parse("3 - 2 - 1").unwrap());
+    println!("2 /* a comment */+ 3 * 5 = {}", parser.parse("2 /* a comment */+ 3 * 5").unwrap());
+    println!("(4-2)*2 // a comment = {}", parser.parse("(4-2)*2 // a comment").unwrap());
     println!("Error example: ((22) = {}", parser.parse("((22)").unwrap_err());
 }
