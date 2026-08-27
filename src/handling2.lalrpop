@@ -32,4 +32,6 @@ match {
     r"\s*" => { },
     r"//[^\n\r]*[\n\r]*" => { }, // `// comment`
     r"/\*([^\*]*\*+[^\*/])*([^\*]*\*+|[^\*])*\*/" => { }, // `/* comment */`
+    // Error: lazy operators are not allowed. This fails: r"/\*(.|\n|\r)*?\*/" => { }, // `/* comment */`
+
 }
